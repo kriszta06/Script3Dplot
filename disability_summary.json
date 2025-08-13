@@ -1,0 +1,184 @@
+{
+  "summary": {
+    "total_persons": 13,
+    "severe_disability": 4,
+    "moderate_disability": 9,
+    "light_disability": 0,
+    "no_disability": 0
+  },
+  "persons": {
+    "Person_1": {
+      "status": "MEDIUM",
+      "disability_level": "MODERATĂ",
+      "final_score": 0.544397721926889,
+      "risk_factors": [
+        "INCONSISTENȚĂ ÎNTRE SCENARII"
+      ],
+      "recommendations": [
+        "Monitorizare periodică",
+        "Evaluare de urgență dacă se agravează",
+        "Intervenție preventivă"
+      ]
+    },
+    "Person_10": {
+      "status": "MEDIUM",
+      "disability_level": "MODERATĂ",
+      "final_score": 0.5947376126791177,
+      "risk_factors": [
+        "INCONSISTENȚĂ ÎNTRE SCENARII"
+      ],
+      "recommendations": [
+        "Monitorizare periodică",
+        "Evaluare de urgență dacă se agravează",
+        "Intervenție preventivă"
+      ]
+    },
+    "Person_11": {
+      "status": "MEDIUM",
+      "disability_level": "MODERATĂ",
+      "final_score": 0.5680533551487169,
+      "risk_factors": [
+        "INCONSISTENȚĂ ÎNTRE SCENARII"
+      ],
+      "recommendations": [
+        "Monitorizare periodică",
+        "Evaluare de urgență dacă se agravează",
+        "Intervenție preventivă"
+      ]
+    },
+    "Person_12": {
+      "status": "MEDIUM",
+      "disability_level": "MODERATĂ",
+      "final_score": 0.6056016571808354,
+      "risk_factors": [
+        "INCONSISTENȚĂ ÎNTRE SCENARII"
+      ],
+      "recommendations": [
+        "Monitorizare periodică",
+        "Evaluare de urgență dacă se agravează",
+        "Intervenție preventivă"
+      ]
+    },
+    "Person_13": {
+      "status": "MEDIUM",
+      "disability_level": "MODERATĂ",
+      "final_score": 0.6574121780468692,
+      "risk_factors": [
+        "INCONSISTENȚĂ ÎNTRE SCENARII"
+      ],
+      "recommendations": [
+        "Monitorizare periodică",
+        "Evaluare de urgență dacă se agravează",
+        "Intervenție preventivă"
+      ]
+    },
+    "Person_2": {
+      "status": "MEDIUM",
+      "disability_level": "MODERATĂ",
+      "final_score": 0.5414978815165991,
+      "risk_factors": [
+        "INCONSISTENȚĂ ÎNTRE SCENARII"
+      ],
+      "recommendations": [
+        "Monitorizare periodică",
+        "Evaluare de urgență dacă se agravează",
+        "Intervenție preventivă"
+      ]
+    },
+    "Person_3": {
+      "status": "MEDIUM",
+      "disability_level": "MODERATĂ",
+      "final_score": 0.5435932666809825,
+      "risk_factors": [],
+      "recommendations": [
+        "Monitorizare periodică",
+        "Evaluare de urgență dacă se agravează",
+        "Intervenție preventivă"
+      ]
+    },
+    "Person_4": {
+      "status": "HIGH",
+      "disability_level": "SEVERĂ",
+      "final_score": 0.7785677300796251,
+      "risk_factors": [
+        "COMPORTAMENT ABNORMAL",
+        "PATTERN-URI NESTANDARD",
+        "INCONSISTENȚĂ ÎNTRE SCENARII"
+      ],
+      "recommendations": [
+        "Necesită evaluare medicală imediată",
+        "Monitorizare constantă",
+        "Posibilă intervenție terapeutică"
+      ]
+    },
+    "Person_5": {
+      "status": "MEDIUM",
+      "disability_level": "MODERATĂ",
+      "final_score": 0.5272190723738931,
+      "risk_factors": [],
+      "recommendations": [
+        "Monitorizare periodică",
+        "Evaluare de urgență dacă se agravează",
+        "Intervenție preventivă"
+      ]
+    },
+    "Person_6": {
+      "status": "MEDIUM",
+      "disability_level": "MODERATĂ",
+      "final_score": 0.6624449754405112,
+      "risk_factors": [
+        "INCONSISTENȚĂ ÎNTRE SCENARII"
+      ],
+      "recommendations": [
+        "Monitorizare periodică",
+        "Evaluare de urgență dacă se agravează",
+        "Intervenție preventivă"
+      ]
+    },
+    "Person_7": {
+      "status": "HIGH",
+      "disability_level": "SEVERĂ",
+      "final_score": 1.0,
+      "risk_factors": [
+        "COMPORTAMENT ABNORMAL",
+        "PATTERN-URI NESTANDARD",
+        "INCONSISTENȚĂ ÎNTRE SCENARII"
+      ],
+      "recommendations": [
+        "Necesită evaluare medicală imediată",
+        "Monitorizare constantă",
+        "Posibilă intervenție terapeutică"
+      ]
+    },
+    "Person_8": {
+      "status": "HIGH",
+      "disability_level": "SEVERĂ",
+      "final_score": 0.7342471417174034,
+      "risk_factors": [
+        "COMPORTAMENT ABNORMAL",
+        "PATTERN-URI NESTANDARD",
+        "INCONSISTENȚĂ ÎNTRE SCENARII"
+      ],
+      "recommendations": [
+        "Necesită evaluare medicală imediată",
+        "Monitorizare constantă",
+        "Posibilă intervenție terapeutică"
+      ]
+    },
+    "Person_9": {
+      "status": "HIGH",
+      "disability_level": "SEVERĂ",
+      "final_score": 0.7945170416130571,
+      "risk_factors": [
+        "COMPORTAMENT ABNORMAL",
+        "PATTERN-URI NESTANDARD",
+        "INCONSISTENȚĂ ÎNTRE SCENARII"
+      ],
+      "recommendations": [
+        "Necesită evaluare medicală imediată",
+        "Monitorizare constantă",
+        "Posibilă intervenție terapeutică"
+      ]
+    }
+  }
+}
