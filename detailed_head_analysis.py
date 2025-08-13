@@ -1,10 +1,16 @@
+<<<<<<< HEAD
 import os
+=======
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
 import sys
 from pathlib import Path
 import json
 import numpy as np
+<<<<<<< HEAD
 import matplotlib
 matplotlib.use('Agg')
+=======
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import re
@@ -17,6 +23,7 @@ from sklearn.manifold import TSNE
 from sklearn.decomposition import PCA
 from scipy.spatial.distance import cdist
 from scipy.stats import entropy
+<<<<<<< HEAD
 from disability_config import DISABILITY_MESSAGES
 
 #sageti pentru a arata directia in care se uita subiectul
@@ -24,6 +31,12 @@ from disability_config import DISABILITY_MESSAGES
 #se converteste in 2D
 class Arrow3D(FancyArrowPatch):
     def __init__(self, xs, ys, zs, *args, **kwargs):
+=======
+
+class Arrow3D(FancyArrowPatch):
+    def __init__(self, xs, ys, zs, *args, **kwargs):
+        # Corecție: înlocuiți time(xs[1], ys[1]) cu (xs[1], ys[1])
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
         FancyArrowPatch.__init__(self, (xs[0], ys[0]), (xs[1], ys[1]), *args, **kwargs)
         self._verts3d = xs, ys, zs
 
@@ -33,7 +46,10 @@ class Arrow3D(FancyArrowPatch):
         self.set_positions((xs[0], ys[0]), (xs[1], ys[1]))
         return np.min(zs)
 
+<<<<<<< HEAD
 #convertire date de tip string din fisierele json in vectori numpy
+=======
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
 def parse_vector_string(vector_str):
     numbers = re.findall(r'-?\d+\.?\d*', vector_str)
     if len(numbers) >= 3:
@@ -41,16 +57,22 @@ def parse_vector_string(vector_str):
     return np.array([0.0, 0.0, 0.0])
 
 def load_complete_head_data(file_path):
+<<<<<<< HEAD
     #citire fisiere
     with open(file_path, 'r') as f:
         data = json.load(f)
     #declarari
+=======
+    with open(file_path, 'r') as f:
+        data = json.load(f)
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
     recordings = data.get('Recordings', [])
     positions = []
     rotations = []
     forward_vectors = []
     timestamps = []
     for recording in recordings:
+<<<<<<< HEAD
         #extragere pozitii cap
         head_pos_str = recording.get('HeadPosition', '(0.00, 0.00, 0.00)')
         position = parse_vector_string(head_pos_str)
@@ -67,22 +89,46 @@ def load_complete_head_data(file_path):
         scene_time = recording.get('SceneTime', 0.0)
         timestamps.append(scene_time)
     #convertire liste in numpy arrays
+=======
+        head_pos_str = recording.get('HeadPosition', '(0.00, 0.00, 0.00)')
+        position = parse_vector_string(head_pos_str)
+        positions.append(position)
+        head_rot_str = recording.get('HeadRotation', '(0.00, 0.00, 0.00)')
+        rotation = parse_vector_string(head_rot_str)
+        rotations.append(rotation)
+        head_forward_str = recording.get('HeadForward', '(0.00, 0.00, 1.00)')
+        forward = parse_vector_string(head_forward_str)
+        forward_vectors.append(forward)
+        scene_time = recording.get('SceneTime', 0.0)
+        timestamps.append(scene_time)
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
     positions = np.array(positions)
     rotations = np.array(rotations)
     forward_vectors = np.array(forward_vectors)
     timestamps = np.array(timestamps)
     if len(timestamps) == 0:
         return np.array([]), np.array([]), np.array([]), np.array([])
+<<<<<<< HEAD
     total_duration = timestamps[-1] - timestamps[0] if len(timestamps) > 0 else 0
     if total_duration <= 20:
         return np.array([]), np.array([]), np.array([]), np.array([])
     #ignorare primele si ultimele 10 secunde
+=======
+    
+    # Corecție: mutați calculul duratei totale aici
+    total_duration = timestamps[-1] - timestamps[0] if len(timestamps) > 0 else 0
+    if total_duration <= 20:
+        return np.array([]), np.array([]), np.array([]), np.array([])
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
     start_time = timestamps[0] + 10.0
     end_time = timestamps[-1] - 10.0
     valid_indices = (timestamps >= start_time) & (timestamps <= end_time)
     return positions[valid_indices], rotations[valid_indices], forward_vectors[valid_indices], timestamps[valid_indices]
 
+<<<<<<< HEAD
 #clustering hierarhic pentru analiza detaliata a capului si dendograme
+=======
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
 def perform_agglomerative_clustering(data, scenario_name, features_combination):
     if len(data) == 0:
         print(f"No valid data for {scenario_name} - {features_combination}")
@@ -147,7 +193,10 @@ def perform_agglomerative_clustering(data, scenario_name, features_combination):
     
     return cluster_labels
 
+<<<<<<< HEAD
 #creeaza un plot 3D pentru clusterele detectate
+=======
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
 def plot_clusters(positions, labels, scenario_name, combo_name):
     fig = plt.figure(figsize=(16, 10))
     ax = fig.add_subplot(111, projection='3d')
@@ -371,7 +420,11 @@ def create_detailed_head_analysis(file_path, save_plot=True, save_csv=False, sho
     print(f"\n✅ Analysis for {scenario_name} complete!")
     print(f"{'='*60}\n")
     
+<<<<<<< HEAD
     #statistici generale
+=======
+    # Return statistics for disability assessment
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
     return {
         'scenario_name': scenario_name,
         'positions': positions,
@@ -385,7 +438,10 @@ def create_detailed_head_analysis(file_path, save_plot=True, save_csv=False, sho
         'cluster_stats': cluster_stats_list
     }
 
+<<<<<<< HEAD
 #comparație între scenarii 
+=======
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
 def plot_all_scenarios_comparison(all_data, global_origin=None):
     if not all_data:
         print("No data available for plotting.")
@@ -410,6 +466,10 @@ def plot_all_scenarios_comparison(all_data, global_origin=None):
         y = positions[:, 2] 
         z = positions[:, 1] 
 
+<<<<<<< HEAD
+=======
+        # Corecție: înlocuiți colors(idx) cu colors[idx]
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
         ax.plot(x, y, z,
                 label=scenario_name,
                 linewidth=2.0,
@@ -427,9 +487,22 @@ def plot_all_scenarios_comparison(all_data, global_origin=None):
     ax.grid(True, alpha=0.4)
     ax.view_init(elev=30, azim=120)
     plt.tight_layout()
+<<<<<<< HEAD
 
 #extragere caracteristici din datele de cap pentru detectarea dizabilităților
 def extract_behavior_features(scenario_data):
+=======
+    plt.savefig("all_scenarios_comparison.png", dpi=300, bbox_inches="tight")
+    print("Saved combined 3D plot: all_scenarios_comparison.png")
+    plt.close()
+
+# =============================================================================
+# DISABILITY DETECTION FUNCTIONS (NON-SUPERVISED WITHOUT KERAS)
+# =============================================================================
+
+def extract_behavior_features(scenario_data):
+    """Extrage caracteristici temporale și spațiale din date"""
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
     positions = scenario_data[:, :3]
     rotations = scenario_data[:, 3:6]
     forwards = scenario_data[:, 6:9]
@@ -437,6 +510,7 @@ def extract_behavior_features(scenario_data):
     
     features = []
     
+<<<<<<< HEAD
     # 1. STATISTICI SPAȚIALE DE BAZĂ
     features.extend(np.mean(positions, axis=0))  # Poziția medie
     features.extend(np.std(positions, axis=0))   # Variația poziției
@@ -553,10 +627,52 @@ def extract_behavior_features(scenario_data):
         features.append(len(unique_directions))
     else:
         features.append(0)
+=======
+    # Statistici spațiale
+    features.extend(np.mean(positions, axis=0))
+    features.extend(np.std(positions, axis=0))
+    features.append(np.sum(np.linalg.norm(np.diff(positions, axis=0), axis=0)))
+    
+    # Statistici de orientare
+    features.extend(np.mean(rotations, axis=0))
+    features.extend(np.std(forwards, axis=0))
+    
+    # Statistici temporale
+    features.append(np.max(timestamps) - np.min(timestamps))
+    features.append(np.mean(np.diff(timestamps)))
+    
+    # Entropia mișcărilor
+    movement = np.diff(positions, axis=0)
+    hist, _ = np.histogramdd(movement, bins=5)
+    hist = hist.flatten()
+    # Protecție împărțire la zero
+    total = np.sum(hist)
+    if total > 0:
+        hist = hist / total
+    else:
+        hist = np.zeros_like(hist)
+    movement_entropy = -np.sum(hist * np.log(hist + 1e-10))
+    features.append(movement_entropy)
+    
+    # Raport distanță/timp
+    total_distance = np.sum(np.linalg.norm(np.diff(positions, axis=0), axis=0))
+    total_time = timestamps[-1] - timestamps[0]
+    features.append(total_distance / total_time if total_time > 0 else 0)
+    
+    # Variația unghiului
+    pitch = rotations[:, 0]
+    yaw = rotations[:, 1]
+    features.append(np.ptp(pitch))
+    features.append(np.ptp(yaw))
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
     
     return np.array(features)
 
 def detect_disability_patterns_unsupervised(all_scenarios):
+<<<<<<< HEAD
+=======
+    """Detectă pattern-uri de dizabilitate folosind PCA și DBSCAN"""
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
     # Extrage caracteristici pentru fiecare scenariu
     feature_vectors = []
     scenario_names = []
@@ -651,12 +767,21 @@ def plot_disability_annotations(all_data, disability_likelihood, global_origin=N
         
         # Plotează traseul
         x = positions[:, 0]
+<<<<<<< HEAD
         y = positions[:, 2]  
         z = positions[:, 1]  
         
         # Alege culoarea în funcție de dizabilitate
         status = disability_likelihood[scenario_name]['status']
 
+=======
+        y = positions[:, 2]   # Z este pe axa Y în plot
+        z = positions[:, 1]   # Y este pe axa Z în plot
+        
+        # Alege culoarea în funcție de dizabilitate
+        status = disability_likelihood[scenario_name]['status']
+        # Corecție: înlocuiți colors[i] cu colors[status]
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
         ax.plot(x, y, z, color=colors[status], alpha=0.7, linewidth=2.5)
         
         # Adaugă marker la început
@@ -696,6 +821,7 @@ def plot_disability_annotations(all_data, disability_likelihood, global_origin=N
     plt.savefig('disability_3d_assessment.png', dpi=300, bbox_inches='tight')
     plt.close()
 
+<<<<<<< HEAD
 def save_detailed_results(disability_assessment, all_person_features):
     """Salvează rezultatele detaliate în format JSON"""
     detailed_results = {
@@ -859,10 +985,15 @@ def create_visual_disability_report(disability_assessment):
         import traceback
         traceback.print_exc()
        
+=======
+# ... (codul existent până la funcția main) ...
+
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
 def group_files_by_person(json_files):
     """Grupează fișierele după identificatorul de persoană"""
     grouped = {}
     for file_path in json_files:
+<<<<<<< HEAD
         # Extrage identificatorul de persoană din formatul '1-A.json', '2-B.json', etc.
         match = re.search(r'(\d+)-[A-Za-z]+\.json$', file_path.name)
         if match:
@@ -877,6 +1008,15 @@ def group_files_by_person(json_files):
     for person, files in grouped.items():
         print(f"DEBUG: {person}: {len(files)} fișiere")
     
+=======
+        # Extrage identificatorul de persoană (ex: 'person1' din 'person1_A.json')
+        match = re.search(r'(.+?)_[A-Za-z]+\.json$', file_path.stem)
+        if match:
+            person_id = match.group(1)
+            if person_id not in grouped:
+                grouped[person_id] = []
+            grouped[person_id].append(file_path)
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
     return grouped
 
 def combine_features_for_person(scenario_features):
@@ -888,6 +1028,10 @@ def combine_features_for_person(scenario_features):
     return np.array(combined)
 
 def analyze_person_disability(all_person_features):
+<<<<<<< HEAD
+=======
+    """Analizează dizabilitățile pe baza caracteristicilor combinate ale fiecărei persoane"""
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
     # Extrage caracteristicile pentru fiecare persoană
     feature_vectors = []
     person_ids = []
@@ -902,7 +1046,11 @@ def analyze_person_disability(all_person_features):
     scaler = StandardScaler()
     scaled_features = scaler.fit_transform(feature_matrix)
     
+<<<<<<< HEAD
     # METODA 1: PCA + DBSCAN pentru detectarea de anomalii
+=======
+    # Reducere dimensionalitate cu PCA
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
     pca = PCA(n_components=0.95)
     principal_components = pca.fit_transform(scaled_features)
     
@@ -914,6 +1062,7 @@ def analyze_person_disability(all_person_features):
     centroid = np.mean(principal_components, axis=0)
     distances = cdist(principal_components, [centroid]).flatten()
     
+<<<<<<< HEAD
     # METODA 2: Analiza multivariată pentru detectarea outlier-elor
     # Calculează scorul Mahalanobis pentru fiecare persoană
     try:
@@ -1254,6 +1403,27 @@ def main():
     # Curăță doar fișierele legate de dizabilități și comparații scenarii
     cleanup_disability_files()
     
+=======
+    # Calculează scor de dizabilitate
+    disability_assessment = {}
+    max_distance = np.max(distances) if len(distances) > 0 else 1
+    
+    for i, person_id in enumerate(person_ids):
+        disability_score = distances[i] / max_distance
+        status = 'HIGH' if disability_score > 0.7 else 'MEDIUM' if disability_score > 0.4 else 'LOW'
+        
+        disability_assessment[person_id] = {
+            'cluster': int(labels[i]),
+            'distance': float(distances[i]),
+            'score': disability_score,
+            'status': status,
+            'disability': status in ['HIGH', 'MEDIUM']
+        }
+    
+    return disability_assessment
+
+def main():
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
     json_files = list(Path('vr_recordings').glob('*.json'))
     if not json_files:
         print("No JSON files found in vr_recordings directory")
@@ -1268,10 +1438,13 @@ def main():
     
     print(f"Found {len(person_files)} persons with scenarios")
     
+<<<<<<< HEAD
     # Debug: afișează ce fișiere au fost găsite pentru fiecare persoană
     for person_id, files in person_files.items():
         print(f"  • {person_id}: {[f.name for f in files]}")
     
+=======
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
     all_person_features = {}
     disability_assessment = {}
     
@@ -1323,6 +1496,7 @@ def main():
 
                 # Extrage caracteristicile pentru scenariu
                 features = extract_behavior_features(scenario_data)
+<<<<<<< HEAD
                 print(f"      ✅ Caracteristici extrase: {len(features)} features")
                 person_features[scenario_name] = features
                 
@@ -1333,19 +1507,30 @@ def main():
                     create_detailed_head_analysis(file_path, save_plot=True, global_origin=global_origin, show_plot=False)
                 else:
                     print(f"   ✅ Analiza individuală pentru {scenario_name} există deja")
+=======
+                person_features[scenario_name] = features
+                
+                # Analiză detaliată individuală (opțional)
+                # create_detailed_head_analysis(file_path, save_plot=True, global_origin=global_origin, show_plot=False)
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
 
             except Exception as e:
                 print(f"Error processing {scenario_name}: {e}")
         
         # Combină caracteristicile din cele 3 scenarii
         if person_features:
+<<<<<<< HEAD
             print(f"   🔄 Combinare caracteristici pentru {person_id}...")
             combined_features = combine_features_for_person(person_features)
             print(f"      ✅ Caracteristici combinate: {len(combined_features)} features")
+=======
+            combined_features = combine_features_for_person(person_features)
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
             all_person_features[person_id] = combined_features
             
             # Plot comparativ pentru scenariile aceleiași persoane
             if all_data:
+<<<<<<< HEAD
                 scenario_comparison_file = f"{person_id}_scenarios_comparison.png"
                 if not os.path.exists(scenario_comparison_file):
                     print(f"   🔄 Generare comparație scenarii pentru {person_id}...")
@@ -1387,6 +1572,27 @@ def main():
         print(f"\n❌ NU SUNT CARACTERISTICI DISPONIBILE PENTRU ANALIZA DIZABILITĂȚILOR!")
         print(f"   • Verifică dacă datele au fost procesate corect")
         print(f"   • Verifică dacă fișierele JSON conțin date valide")
+=======
+                plot_all_scenarios_comparison(all_data, global_origin=global_origin)
+                plt.savefig(f"{person_id}_scenarios_comparison.png", dpi=300)
+                plt.close()
+    
+    # Analizează dizabilitățile pe baza caracteristicilor combinate
+    if all_person_features:
+        disability_assessment = analyze_person_disability(all_person_features)
+        
+        # Salvează rezultatele
+        with open('person_disability_assessment.json', 'w') as f:
+            json.dump(disability_assessment, f, indent=2)
+        
+        # Afișează rezultatele finale
+        print("\n\n" + "="*60)
+        print("PERSON DISABILITY ASSESSMENT RESULTS")
+        print("="*60)
+        for person, result in disability_assessment.items():
+            disability_status = "WITH DISABILITY" if result['disability'] else "NO DISABILITY"
+            print(f"{person}: {disability_status} (score: {result['score']:.2f}, status: {result['status']})")
+>>>>>>> 9adf2b231b0c2aeb393eb2c968ed92dc9eec756b
 
 if __name__ == "__main__":
     main()
